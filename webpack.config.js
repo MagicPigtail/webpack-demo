@@ -48,10 +48,11 @@ module.exports = {
 	// 	minimizer: [new OptimizeCSSAssetsPlugin({})]
 	// },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],    //require和import的后缀名优先级设置（从左到右）
     alias: {
       '@': path.resolve(__dirname, 'src/'),
-    }
+    },
+    modules: ['./src/components','node_modules']   //组件内引入优先级  例如：import 'button'
   },
   devtool: 'source-map',
   plugins: [
@@ -64,13 +65,25 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: path.join(`css/[name].[contenthash:8].css?`),
-      chunkFilename: path.join(`css/[name].[contenthash:8].css?`),
+      chunkFilename: path.join(`css/[name].chunk.[contenthash:8].css?`),
     }),
     new OptimizeCssAssetsPlugin()
   ],
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    headers: {
+      cookie: "123"  //此处可注入响应头
+    },
+    contentBase: path.join(__dirname, "dist"),    //设置DevServer服务器的文件根目录
     host: "0.0.0.0",
-    port: 8081
+    port: 8081,
+    historyApiFallback: {
+      rewrites: [     //路由匹配规则
+        // { from: /^\/user/,to: '/user.html' },
+        // { from: /^\/game/,to: '/game.html' },
+        { from: /^\/home/,to: '/index.html' },
+        { from: /./,to: '/index.html' },  //其他所有返回index.html
+      ]
+    },
+    https: true   //默认使用https服务
   }
 };

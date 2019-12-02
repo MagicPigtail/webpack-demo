@@ -7,7 +7,6 @@
   "scripts": {
     "test": "gotest",
     "build": "webpack",
-    "start": "webpack",
     "start-dev": "webpack-dev-server"
   },
   "author": "yz",
