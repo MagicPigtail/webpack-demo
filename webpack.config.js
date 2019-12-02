@@ -11,7 +11,7 @@ module.exports = {
   entry: './src/app.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[name].[contenthash:8].js',
+    filename: 'js/[name].[contenthash:8].js?',
   },
   mode: "development",
   // mode: "production",
@@ -36,7 +36,7 @@ module.exports = {
       {
         test:/\.scss$/,
         use: [
-          // {loader: MiniCssExtractPlugin.loader},
+          {loader: MiniCssExtractPlugin.loader},
           {loader: "css-loader"},
           {loader: "sass-loader"},
         ],
@@ -63,8 +63,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: path.join(`css/[name].css?[contenthash:8]`),
-      chunkFilename: path.join(`css/[name].chunk.css?[contenthash:8]`),
+      filename: path.join(`css/[name].[contenthash:8].css?`),
+      chunkFilename: path.join(`css/[name].[contenthash:8].css?`),
     }),
     new OptimizeCssAssetsPlugin()
   ],
