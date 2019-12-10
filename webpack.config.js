@@ -51,6 +51,8 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],    //require和import的后缀名优先级设置（从左到右）
     alias: {
       '@': path.resolve(__dirname, 'src/'),
+      'components': path.resolve(__dirname,'src/components/'),
+      'assets': path.resolve(__dirname,'src/assets/'),
     },
     modules: ['./src/components','node_modules']   //组件内引入优先级  例如：import 'button'
   },
@@ -70,20 +72,20 @@ module.exports = {
     new OptimizeCssAssetsPlugin()
   ],
   devServer: {
-    headers: {
-      cookie: "123"  //此处可注入响应头
-    },
-    contentBase: path.join(__dirname, "dist"),    //设置DevServer服务器的文件根目录
+    // headers: {
+    //   cookie: "123"  //此处可注入响应头
+    // },
+    // contentBase: path.join(__dirname, "dist"),    //设置DevServer服务器的文件根目录
     host: "0.0.0.0",
     port: 8081,
-    historyApiFallback: {
-      rewrites: [     //路由匹配规则
-        // { from: /^\/user/,to: '/user.html' },
-        // { from: /^\/game/,to: '/game.html' },
-        { from: /^\/home/,to: '/index.html' },
-        { from: /./,to: '/index.html' },  //其他所有返回index.html
-      ]
-    },
-    https: true   //默认使用https服务
+    // historyApiFallback: {
+    //   rewrites: [     //路由匹配规则
+    //     // { from: /^\/user/,to: '/user.html' },
+    //     // { from: /^\/game/,to: '/game.html' },
+    //     { from: /^\/home/,to: '/index.html' },
+    //     { from: /./,to: '/index.html' },  //其他所有返回index.html
+    //   ]
+    // },
+    // https: true   //默认使用https服务
   }
 };

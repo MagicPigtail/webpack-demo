@@ -1,13 +1,29 @@
 import React from "react"
-import Demo from "@/Demo"
-import Logo from "@/images/logo.png"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  NavLink,
+} from 'react-router-dom'
+import {
+  Demo,
+  Logo,
+  ErrorBoundary
+} from "components"
 
 const App = () => {
   return (
-    <div>
-      <Demo />
-      <img className="logo" src={ Logo } onClick={this.handleClick} />
-    </div>
+    <Router basename='/'>
+      <ErrorBoundary>
+        <NavLink to='/demo'>Demo</NavLink>
+        <NavLink to='/logo'>logo</NavLink>
+        <Switch>
+          <Route path='/demo' component={Demo} />
+          <Route path='/logo' component={Logo} />
+        </Switch>
+      </ErrorBoundary>
+    </Router>
   )
 }
 

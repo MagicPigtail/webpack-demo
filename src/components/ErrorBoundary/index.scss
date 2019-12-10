@@ -1,0 +1,23 @@
+.error-boundary {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+
+  .error-boundary_image {
+    width: 654px;
+    height: 873px;
+    background: url('https://i01.appmifile.com/webfile/globalimg/frontend/m/error_page.png') no-repeat center/contain;
+    margin-bottom: 60px;
+  }
+
+  .error-boundary__info {
+    margin-top: 820px;
+    bottom: 0;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    color: rgba(80, 80, 80, 1);
+    line-height: 47px;
+    opacity: 0.6;
+  }
+}
