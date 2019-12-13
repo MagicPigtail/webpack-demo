@@ -52,6 +52,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
       'components': path.resolve(__dirname,'src/components/'),
+      'modules': path.resolve(__dirname,'src/modules/'),
       'assets': path.resolve(__dirname,'src/assets/'),
     },
     modules: ['./src/components','node_modules']   //组件内引入优先级  例如：import 'button'

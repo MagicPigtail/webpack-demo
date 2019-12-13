@@ -7,17 +7,20 @@ import {
   NavLink,
 } from 'react-router-dom'
 import {
-  Demo,
-  Logo,
   ErrorBoundary
 } from "components"
+
+import {
+  Demo,
+  Logo,
+} from "modules"
 
 const App = () => {
   return (
     <Router basename='/'>
       <ErrorBoundary>
         <NavLink to='/demo'>Demo</NavLink>
-        <NavLink to='/logo'>logo</NavLink>
+        <NavLink to='/logo'>Logo</NavLink>
         <Switch>
           <Route path='/demo' component={Demo} />
           <Route path='/logo' component={Logo} />
